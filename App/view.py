@@ -52,7 +52,7 @@ def printMenu():
     print("2- Cargar información de crimenes")
     print("3- Consultar crimenes en un rango de fechas")
     print("4- Consultar crimenes por codigo y fecha")
-    # TODO lab 9, agregar opcion 5 en el menu, consultar por REPORTING_AREA
+    print("5- Consultar por REPORTING_AREA")
     print("0- Salir")
     print("*******************************************")
 
@@ -77,9 +77,12 @@ while True:
         print("Elementos en el arbol: " + str(controller.indexSize(cont)))
         print("Menor Llave: " + str(controller.minKey(cont)))
         print("Mayor Llave: " + str(controller.maxKey(cont)))
-        # TODO lab 9, imprimir las propiedades del indice de areas
-        # propiedades: altura, elementos y llaves min y max
-
+        
+        print("AREAS")
+        print("Altura del arbol areas: " + str(controller.indexHeightAreas(cont)))
+        print("Elementos en el arbol areas: " + str(controller.indexSizeAreas(cont)))
+        print("Menor Llave areas: " + str(controller.minKeyAreas(cont)))
+        print("Mayor Llave areas: " + str(controller.maxKeyAreas(cont)))
     elif int(inputs[0]) == 3:
         print("\nBuscando crimenes en un rango de fechas: ")
         initialDate = input("Fecha Inicial (YYYY-MM-DD): ")
@@ -97,10 +100,13 @@ while True:
               str(numoffenses))
 
     elif (int(inputs[0]) == 5):
-        # TODO lab 9, implementar el I/O e invocar las funcions de la opcion 5
+
+        initialArea = input("Area inicial: ")
+        finalArea = input("Area final: ")
         print("\nBuscando crimenes en un rango de areas: ")
         print("Las areas estan numeradas con enteros (1 - 962)")
         print("Un area desconocida tiene el el numero 9999")
+        total = controller.getCrimesByRangeArea(cont, initialArea, finalArea)
 
     else:
         sys.exit(0)
